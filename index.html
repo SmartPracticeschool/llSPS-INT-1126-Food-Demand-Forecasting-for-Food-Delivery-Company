@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>Food Demand Forecasting</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/pro.css') }}">
+  
+</head>
+
+<body>
+ <div class="login">
+	<h1>Predict food orders</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+      <input type="text" name="home_featured" placeholder=" home featured:0 or 1" required="required"/>
+      <br><input type="text" name="emailer_for_promotion" placeholder="emailer_for_promotion:0 or 1" required="required"/>
+     <br><input type="text" name="op_area" placeholder="op_area" required="required"/>
+    <br>
+        <select id="type" name="type">
+            <option value="0">Thai</option>
+            <option value="1">Indian</option>
+            <option value="2">Italian</option>
+            <option value="3">Continental</option>
+    </select>
+  <br> <input type="text" name="city_code" placeholder="city_code" required="required"/>
+   <br><input type="text" name="region_code" placeholder="region_code" required="required"/>
+   <br>
+    <select id="relation" name="relation">
+      <option value="0">Beverages</option>
+      <option value="1">Extras</option>
+      <option value="2">Soup</option>
+      <option value="3">Other Snacks</option>
+      <option value="4">Salad</option>
+      <option value="6">Rice Bowl</option>
+      <option value="7">Starters</option>
+      <option value="8">Sandwich</option>
+      <option value="9">Desert</option>
+      <option value="10">Pasta</option>
+      <option value="11">Biryani</option>
+      <option value="12">Pizza</option>
+      <option value="13">Fish</option>
+      <option value="14">Seafood</option>
+    </select>
+   <br> <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+     </form>  
+   <br>
+   {{ prediction_text }}
+
+ </div>
+
+
+</body>
+</html>
